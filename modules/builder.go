@@ -2,6 +2,7 @@ package modules
 
 import (
 	fiftyonedegreesDevicedetection "github.com/prebid/prebid-server/v4/modules/fiftyonedegrees/devicedetection"
+	nodalsRtd "github.com/prebid/prebid-server/v4/modules/nodals/rtd"
 	prebidOrtb2blocking "github.com/prebid/prebid-server/v4/modules/prebid/ortb2blocking"
 	prebidRulesengine "github.com/prebid/prebid-server/v4/modules/prebid/rulesengine"
 	wurflDevicedetection "github.com/prebid/prebid-server/v4/modules/scientiamobile/wurfl_devicedetection"
@@ -14,6 +15,9 @@ func builders() ModuleBuilders {
 	return ModuleBuilders{
 		"fiftyonedegrees": {
 			"devicedetection": fiftyonedegreesDevicedetection.Builder,
+		},
+		"nodals": {
+			"rtd": nodalsRtd.Builder,
 		},
 		"prebid": {
 			"ortb2blocking": prebidOrtb2blocking.Builder,
