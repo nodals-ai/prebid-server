@@ -63,7 +63,7 @@ var (
 type Config struct {
 	Endpoint   string `json:"endpoint"`    // Required: URL of the Nodals targeting server
 	PropertyID string `json:"property_id"` // Required: Publisher's property identifier
-	Timeout    int    `json:"timeout_ms"`  // Optional: HTTP timeout in milliseconds (default: 1000)
+	Timeout    int    `json:"timeout_ms"`  // Optional: HTTP timeout in milliseconds (default: 500)
 }
 
 // TargetingKeyValue represents a single key-value pair for targeting
@@ -233,10 +233,9 @@ func (m *Module) fetchTargeting(ctx context.Context, bidRequest *openrtb2.BidReq
 		return nil, fmt.Errorf("failed to marshal bid request: %w", err)
 	}
 
-	// Inject property_id into ext.nodals.property_id
-	requestBody, err = sjson.SetBytes(requestBody, "ext.nodals.property_id", m.cfg.PropertyID)
+	requestBody, err = sjson.SetBytes(requestBody, "site.ext.nodals.pid", m.cfg.PropertyID)
 	if err != nil {
-		return nil, fmt.Errorf("failed to add property_id to request: %w", err)
+		return nil, fmt.Errorf("failed to add pid to request: %w", err)
 	}
 
 	// Create HTTP request

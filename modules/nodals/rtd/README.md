@@ -127,7 +127,7 @@ hooks:
 
 ### API Request Format
 
-The module sends the complete OpenRTB bid request to the configured endpoint with the `property_id` automatically injected into the request at `ext.nodals.property_id`. This allows the Nodals API to identify which property the request is for and apply the appropriate targeting logic.
+The module sends the complete OpenRTB bid request to the configured endpoint with the `property_id` automatically injected into the request at `site.ext.nodals.pid`. This allows the Nodals API to identify which property the request is for and apply the appropriate targeting logic.
 
 ### API Response Format
 

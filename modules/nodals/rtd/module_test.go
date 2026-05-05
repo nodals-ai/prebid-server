@@ -124,16 +124,18 @@ func TestAPIIntegration(t *testing.T) {
 		assert.Equal(t, "POST", r.Method)
 		assert.Equal(t, "application/json", r.Header.Get("Content-Type"))
 
-		// Verify property_id is in the request
+		// Verify property_id is in the request at site.ext.nodals.pid
 		var requestBody map[string]interface{}
 		err := json.NewDecoder(r.Body).Decode(&requestBody)
 		require.NoError(t, err)
 
-		ext, ok := requestBody["ext"].(map[string]interface{})
-		require.True(t, ok, "ext should exist in request")
+		site, ok := requestBody["site"].(map[string]interface{})
+		require.True(t, ok, "site should exist in request")
+		ext, ok := site["ext"].(map[string]interface{})
+		require.True(t, ok, "site.ext should exist in request")
 		nodals, ok := ext["nodals"].(map[string]interface{})
-		require.True(t, ok, "ext.nodals should exist in request")
-		assert.Equal(t, "e6b50d21", nodals["property_id"], "property_id should be in ext.nodals")
+		require.True(t, ok, "site.ext.nodals should exist in request")
+		assert.Equal(t, "e6b50d21", nodals["pid"], "pid should be in site.ext.nodals")
 
 		// Return mock Nodals response with targeting per impression
 		response := `{
