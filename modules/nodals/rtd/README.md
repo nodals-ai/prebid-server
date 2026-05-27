@@ -1,6 +1,6 @@
 # Nodals AI RTD Module
 
-This module integrates Nodals AI's Real-Time Data API to analyze first-party signals and provide dynamic targeting key-values that indicate the value of ad inventory to advertisers.
+This module integrates Nodals AI's Real-Time Data API to analyze first-party signals and provide dynamic targeting key-values that indicate high-value ad opportunities.
 
 ## Overview
 
